@@ -13,8 +13,8 @@
     
  <!-- file appender -->
 	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">		
-		<!-- param name="file" value="D:/eGovFrameDev-3.2.0-32bit/log/easyCompany2.log" /-->		
-		<param name="file" value="/usr/local/tomcat8/applogs/easyCompany2.log" />			
+		<!--  <param name="file" value="D:/eGovFrameDev-3.2.0-32bit/log/easyCompany2.log" /> -->		
+		 <param name="file" value="/usr/local/tomcat8/applogs/easyCompany2.log" />		
 		<param name="Append" value="true" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
