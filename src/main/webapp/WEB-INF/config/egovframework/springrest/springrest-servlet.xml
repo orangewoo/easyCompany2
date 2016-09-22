@@ -34,9 +34,17 @@
 	</bean>
 
 <!-- restful json START -->
-	<bean name="cgr/egovCategoryList" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+<!--	<bean name="cgr/egovCategoryList" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
 		<property name="prefixJson" value="false"/>
+	 </bean> -->
+	<bean name="ajaxView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+		<!-- property name="prefixJson" value="false"/-->
+		<property name="contentType" value="text/html; charset=UTF-8" />
+		
 	 </bean>
+	  
+  
+
 <!-- restful json END -->
 
 <!--  restful xml (jaxb2)  START-->

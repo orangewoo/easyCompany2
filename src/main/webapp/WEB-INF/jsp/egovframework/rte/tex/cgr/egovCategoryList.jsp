@@ -118,7 +118,7 @@ function fn_egov_link_page(pageNo){
 			<ul>
 				<li><span class="btn_blue_l" title="<spring:message code="button.add" />"><a href="#link" onclick="fn_egov_addView(); return false;"><spring:message code="button.add" /></a><img src="<c:url value='/images/egovframework/rte/btn_bg_r.gif'/>" style="margin-left:6px;" alt="<spring:message code="button.add" />"/></span>
 				</li>
-				<spring:url value="/springrest/cgr.json" var="jsonUrl" htmlEscape="true" />
+				<spring:url value="/springrest/cgrJson.json" var="jsonUrl" htmlEscape="true" />
 				<li><span class="btn_blue_l" title="<spring:message code="button.json" />"><a href="${jsonUrl}"><spring:message code="button.json" /></a><img src="<c:url value='/images/egovframework/rte/btn_bg_r.gif'/>" style="margin-left:6px;" alt="<spring:message code="button.json" />"/></span></li>
 				<li><input type="submit" style="display:none" title="submit"/></li>
 			</ul>

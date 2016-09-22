@@ -121,7 +121,9 @@
 	<!--  excel end -->
 	
 	<!-- Ajax Json View Start -->
-	<bean name="ajaxMainView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	<bean name="ajaxMainView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" >
+		<property name="contentType" value="text/html; charset=UTF-8" />
+	</bean>
 	<!-- Ajax Json View End -->
    
 </beans>

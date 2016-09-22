@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -92,11 +93,47 @@ public class EgovCategoryController {
 		MemberVO loginVO=EgovUserUtil.getMemberInfo();
 		model.addAttribute("loginVO", loginVO);
 		
+System.out.println(" /springrest/cgr ============================================================  ");
 
 		if("popup".equals(request.getParameter("name"))) return "cgr/EgovCategoryPopup";
 		else 
+			//return "ajaxView";
 			return "cgr/egovCategoryList";
 	}
+	
+	
+	/**
+	 * 카테고리 목록을 출력한다.
+	 * @param request
+	 * @param model
+	 * @return "cgr/egovCategoryList"
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/springrest/cgrJson", method=RequestMethod.GET)
+	public String selectCategoryListJson(HttpServletRequest request, Model model)
+			throws Exception {
+		List categoryList = categoryService.selectCategoryList();
+		
+		List category1 = new ArrayList();
+		
+		for( int i=categoryList.size()-1; i >=0; i--){
+			category1.add(categoryList.get(i));
+		}
+		
+		
+		model.addAttribute("categoryList", category1);
+		
+		MemberVO loginVO=EgovUserUtil.getMemberInfo();
+		model.addAttribute("loginVO", loginVO);
+		
+System.out.println(" /springrest/cgrJson ajaxMainView ============================================================  ");
+
+		if("popup".equals(request.getParameter("name"))) return "cgr/EgovCategoryPopup";
+		else 
+			return "ajaxMainView";
+			
+	}
+	
 	
     /**
      * 카테고리 등록 화면으로 이동한다.
@@ -129,7 +166,6 @@ public class EgovCategoryController {
 		if (results.hasErrors()) {
 			return "cgr/egovCategoryRegister";
 		}
-
 		categoryService.insertCategory(categoryVO);
 
 		return "redirect:/springrest/cgr.html";
