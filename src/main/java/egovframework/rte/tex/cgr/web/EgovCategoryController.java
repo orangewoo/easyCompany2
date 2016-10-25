@@ -16,7 +16,9 @@
 package egovframework.rte.tex.cgr.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -110,7 +112,8 @@ System.out.println(" /springrest/cgr ===========================================
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/springrest/cgrJson", method=RequestMethod.GET)
-	public String selectCategoryListJson(HttpServletRequest request, Model model)
+	@ResponseBody
+	public  Map<String,Object> selectCategoryListJson(HttpServletRequest request, Model model)
 			throws Exception {
 		List categoryList = categoryService.selectCategoryList();
 		
@@ -128,9 +131,16 @@ System.out.println(" /springrest/cgr ===========================================
 		
 System.out.println(" /springrest/cgrJson ajaxMainView ============================================================  ");
 
-		if("popup".equals(request.getParameter("name"))) return "cgr/EgovCategoryPopup";
+		//@ResponseBody 테스트
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("categoryList", category1);
+		map.put("loginVO", loginVO);
+		
+	return map ;
+
+		/*if("popup".equals(request.getParameter("name"))) return "cgr/EgovCategoryPopup";
 		else 
-			return "ajaxMainView";
+			return "ajaxMainView";*/
 			
 	}
 	

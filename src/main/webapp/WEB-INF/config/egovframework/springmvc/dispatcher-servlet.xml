@@ -34,8 +34,39 @@
 	
 	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
 	
-	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean> 
+	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>  -->
 	
+	 
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+       <!--  <property name="webBindingInitializer">
+            <bean class="egovframework.com.cmmn.web.EgovBindingInitializer"/>
+        </property> -->
+     
+        <!--@ResponseBody 사용시  한글깨짐 방지 -->
+        <property name="messageConverters">
+        <list>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+                <property name="supportedMediaTypes" value="text/plain;charset=UTF-8"/>
+		    	<!-- <property name="supportedMediaTypes">
+		    	    <list>
+                       <value>application/json</value>
+                       <value>application/text</value>
+                    </list>
+                </property> -->
+			</bean>
+		    <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+        </list>
+      </property>
+    
+    </bean>
+    
 	  <!--
         - The form-based controllers within this application provide @RequestMapping 
         - annotations at the type level for path mapping URLs and @RequestMapping 
