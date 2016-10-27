@@ -20,23 +20,22 @@
     </context:component-scan>
 
 
-
-	<!-- Integrated Apache Commons Validator by Spring Modules -->
-	
+	<!-- springMVC controller 없이 .do -> .jsp 직접호출  -->
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
    		<property name="order" value="0"/>
 		<property name="mappings">
-			<props>
+			<value>/**/*.do=urlFilenameViewController</value> 
+			<!-- <props>			
                 <prop key="/com/validator.do">urlFilenameViewController</prop>
-			</props>
+                <prop key="/test.do">urlFilenameViewController</prop> 
+			</props> -->
 		</property>
+	</bean>	
+	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
 	</bean>
+	<!-- springMVC controller 없이 .do -> .jsp 직접호출 여기까지. -->
 	
-	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
-	
-	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>  -->
-	
-	 
+	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>  -->		 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
        <!--  <property name="webBindingInitializer">
             <bean class="egovframework.com.cmmn.web.EgovBindingInitializer"/>
@@ -82,10 +81,16 @@
         - for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
      -->
     
+    
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-<!--     	<property name="alwaysUseFullPath" value="true"/> -->
+	  <!--  	<property name="alwaysUseFullPath" value="true"/>   -->
     	<property name="order" value="1"/>
     </bean>
+  
+    
+  <!--   <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    	<property name="order" value="1"/>
+    </bean> -->
     
     <!--
         - This bean resolves specific types of exceptions to corresponding logical 
