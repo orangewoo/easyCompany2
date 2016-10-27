@@ -21,19 +21,19 @@
 
 
 	<!-- springMVC controller 없이 .do -> .jsp 직접호출  -->
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-   		<property name="order" value="0"/>
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+   		<property name="order" value="2"/>
 		<property name="mappings">
 			<value>/**/*.do=urlFilenameViewController</value> 
-			<!-- <props>			
+			<props>			
                 <prop key="/com/validator.do">urlFilenameViewController</prop>
                 <prop key="/test.do">urlFilenameViewController</prop> 
-			</props> -->
+			</props>
 		</property>
 	</bean>	
 	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
 	</bean>
-	<!-- springMVC controller 없이 .do -> .jsp 직접호출 여기까지. -->
+ -->	<!-- springMVC controller 없이 .do -> .jsp 직접호출 여기까지. -->
 	
 	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>  -->		 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -60,7 +60,7 @@
                     </list>
                 </property> -->
 			</bean>
-		    <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+		  <!--   <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" /> -->
         </list>
       </property>
     
